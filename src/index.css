@@ -1,0 +1,47 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  /* Pixel crosshair cursor — yellow plus shape with white center */
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Crect x='10' y='0' width='4' height='24' fill='%23FFD700'/%3E%3Crect x='0' y='10' width='24' height='4' fill='%23FFD700'/%3E%3Crect x='10' y='10' width='4' height='4' fill='white'/%3E%3C/svg%3E") 12 12, crosshair !important;
+}
+
+:root {
+  --sky:    #87CEEB;
+  --navy:   #1A1A6E;
+  --yellow: #FFD700;
+  --coral:  #FF5533;
+  --teal:   #007B7B;
+  --cream:  #FFFFF0;
+  --pixel:  'Press Start 2P', 'Courier New', monospace;
+  --mono:   'Courier New', Courier, monospace;
+}
+
+html, body {
+  min-height: 100vh;
+  /* sky blue with white polka dots — classic 90s tiled bg feel */
+  background-color: var(--sky);
+  background-image: radial-gradient(circle, rgba(255,255,255,0.55) 1px, transparent 1px);
+  background-size: 16px 16px;
+  font-family: var(--mono);
+  color: var(--navy);
+  -webkit-font-smoothing: none;
+}
+
+::selection {
+  background: var(--yellow);
+  color: var(--navy);
+}
+
+/* ── Sparkle trail ───────────────────────────────── */
+@keyframes sparkle-out {
+  0%   { opacity: 1; transform: scale(1) rotate(0deg); }
+  100% { opacity: 0; transform: scale(0) rotate(90deg); }
+}
+
+.sparkle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 99998;
+  animation: sparkle-out 0.55s ease-out forwards;
+}
