@@ -1,0 +1,20 @@
+[build]
+  command   = "npm run build"
+  publish   = "dist"
+  functions = "netlify/functions"
+
+# SPA fallback — production only.
+# Vite handles its own SPA fallback in dev mode; applying this catch-all
+# in dev intercepts every JS module request and returns index.html instead,
+# causing Vite's import-analysis plugin to choke on HTML it expected to be JS.
+[context.production]
+[[context.production.redirects]]
+  from   = "/*"
+  to     = "/index.html"
+  status = 200
+
+[dev]
+  command    = "npm run dev"
+  targetPort = 5173
+  port       = 8888
+  framework  = "#custom"
